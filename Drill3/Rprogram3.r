@@ -37,11 +37,20 @@ var(MU2)
 var(MU3)
 
 
-
+# ====================================================================
 # NOTE: one can use rQCC package
+# Refer to https://appliedstat.github.io/R/R-package-3/
+
+library("rQCC")
+
+var(MU2) / var(MU1) 
 RE(5, "median")
+
 RE(5, "mean")
+var(MU2) / var(MU2) 
+
 RE(5, "HL1")
+var(MU2) / var(MU3) 
 
 
 
