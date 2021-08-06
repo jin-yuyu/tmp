@@ -16,10 +16,10 @@ HL <- function (x, estimator=c("HL1", "HL2", "HL3"), na.rm=FALSE) {
 HL1a <- function (x) {
     n = length(x)
     yij = NULL
-    for ( i in 1:(n-1) ) {         ### <----------
-        for ( j in (i+1):n ) {     ### <----------
-            yij = c(yij, (x[i]+x[j])/2)
-        }
+    for ( i in 1:(n-1) ) {         
+        for ( j in (i+1):n ) {            # <------
+            yij = c(yij, (x[i]+x[j])/2)   # <------
+        }                                 # <------
     }
     return( median(yij) )
 }
@@ -27,18 +27,18 @@ HL1a <- function (x) {
 HL1b <- function (x) {
     n = length(x)
     yij = NULL
-    for ( i in 1:(n-1) ) {         ### <----------
-        yij = c(yij, (x[i]+x[(i+1):n]))
+    for ( i in 1:(n-1) ) {         
+        yij = c(yij, (x[i]+x[(i+1):n]))   ### <-------
     }
-    return( median(yij)/2 )
+    return( median(yij)/2 )               # <-----
 }
 #-----------------------------
 HL2a <- function (x) {
     n = length(x)
     yij = NULL 
-    for ( i in 1:n)  {         ### <----------
-        for ( j in i:n ) {     ### <----------
-            yij = c(yij, (x[i]+x[j])/2)
+    for ( i in 1:n)  {                    # <------
+        for ( j in i:n ) {                # <------ 
+            yij = c(yij, (x[i]+x[j])/2)   # <------
         }
     }
     return( median(yij) )
@@ -47,29 +47,29 @@ HL2a <- function (x) {
 HL2b <- function (x) {
     n = length(x)
     yij = NULL
-    for ( i in 1:n)  {         ### <----------
-            yij = c(yij, (x[i]+x[i:n]))
+    for ( i in 1:n)  {         
+            yij = c(yij, (x[i]+x[i:n]))   ### <-------
     }
-    return( median(yij)/2 ) 
+    return( median(yij)/2 )               # <-----
 }
 #-----------------------------
 HL3a <- function (x) {
     n = length(x)
     yij = NULL
-    for ( i in 1:n)  {         ### <----------
-        for ( j in 1:n ) {     ### <----------
-            yij = c(yij, (x[i]+x[j])/2)
-        }
+    for ( i in 1:n)  {         
+        for ( j in 1:n ) {                 # <------      
+            yij = c(yij, (x[i]+x[j])/2)    # <------
+        }                                  # <------
     }
     return( median(yij) )
 }
 HL3b <- function (x) {
     n = length(x)
     yij = NULL
-    for ( i in 1:n)  {         ### <----------
-            yij = c(yij, (x[i]+x[1:n]))
+    for ( i in 1:n)  {         
+            yij = c(yij, (x[i]+x[1:n]))   ### <-------
     }
-    return( median(yij)/2 )
+    return( median(yij)/2 )               # <-----
 }
 #-----------------------------
 
