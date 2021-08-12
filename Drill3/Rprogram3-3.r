@@ -36,10 +36,10 @@ HL1b <- function (x) {
 HL2a <- function (x) {
     n = length(x)
     yij = NULL 
-    for ( i in 1:n)  {                    # <------
+    for ( i in 1:n)  {                
         for ( j in i:n ) {                # <------ 
             yij = c(yij, (x[i]+x[j])/2)   # <------
-        }
+        }                                 # <------
     }
     return( median(yij) )
 }
