@@ -1,7 +1,7 @@
 
 #===================================================
-pdf(file="ROC-curve.pdf", width=5.5, height=5.5)
-par(mfrow=c(1,1), mar=c(5, 5, 1, 1), omi=c(0,0,0,0), cex=0.6, mex=0.6)
+pdf(file="ROC-curve.pdf", width=7.5, height=2.5)
+par(mfrow=c(1,3), mar=c(5, 5, 1, 1), omi=c(0,0,0,0), cex=0.6, mex=0.6)
 #---------------------------------------------------
 
 # Power function :  Assuming sigma=known
@@ -52,7 +52,7 @@ powerz30 = Kz(mu1, alpha=ALPHA, mu0=mu0, sigma=sigma, n=30)
 lines(ALPHA, powerz10,  lty=2)
 lines(ALPHA, powerz20,  lty=3)
 lines(ALPHA, powerz30,  lty=4)
-legend (0.8, 0.5, legend=c("n=5", "n=10", "n=20", "n=30"), 
+legend (0.6, 0.5, legend=c("n=5", "n=10", "n=20", "n=30"), 
         horiz=FALSE, bty="n", lty=1:4, lwd=1.0 )
 
 # Let's add t-tests  with red color
@@ -72,30 +72,30 @@ mu0 = 0.5; sigma=1; n=5
 
 ALPHA=seq(0.01,0.99, by=0.01)
 
-powerz1 = Kz(mu=0.5, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
-powerz2 = Kz(mu=1.0, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
-powerz3 = Kz(mu=1.5, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
-powerz4 = Kz(mu=2.0, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
+powerz0.5 = Kz(mu=0.5, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
+powerz1.0 = Kz(mu=1.0, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
+powerz1.5 = Kz(mu=1.5, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
+powerz2.0 = Kz(mu=2.0, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
 
- plot(ALPHA, powerz1, xlim=c(0,1),  ylim=c(0,1), type="l", col="black",
+ plot(ALPHA, powerz0.5, xlim=c(0,1),  ylim=c(0,1), type="l", col="black",
       xlab=expression(alpha), ylab="Power")
-lines(ALPHA, powerz2,  lty=2)
-lines(ALPHA, powerz3,  lty=3)
-lines(ALPHA, powerz4,  lty=4)
-legend (0.8, 0.5, 
+lines(ALPHA, powerz1.0,  lty=2)
+lines(ALPHA, powerz1.5,  lty=3)
+lines(ALPHA, powerz2.0,  lty=4)
+legend (0.6, 0.5, 
         legend=c(expression(mu==0.5), expression(mu==1.0), expression(mu==1.5), expression(mu==2.0)), 
         horiz=FALSE, bty="n", lty=1:4, lwd=1.0 )
 
 # Let's add t-tests with red color
-powert1 = Kt(mu=0.5, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
-powert2 = Kt(mu=1.0, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
-powert3 = Kt(mu=1.5, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
-powert4 = Kt(mu=2.0, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
+powert0.5 = Kt(mu=0.5, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
+powert1.0 = Kt(mu=1.0, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
+powert1.5 = Kt(mu=1.5, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
+powert2.0 = Kt(mu=2.0, alpha=ALPHA, mu0=mu0, sigma=sigma, n=5)
 
-lines(ALPHA, powert1,   lty=1, col="red")
-lines(ALPHA, powert2,  lty=2, col="red")
-lines(ALPHA, powert3,  lty=3, col="red")
-lines(ALPHA, powert4,  lty=4, col="red")
+lines(ALPHA, powert0.5,  lty=1, col="red")
+lines(ALPHA, powert1.0,  lty=2, col="red")
+lines(ALPHA, powert1.5,  lty=3, col="red")
+lines(ALPHA, powert2.0,  lty=4, col="red")
 
 # Check with a straignt line with slope one.
 abline(a=0, b=1, col="cyan")
