@@ -35,6 +35,7 @@ lines(ALPHA, powerz,  col="black")
 legend (0,1.0, legend=c(expression(K[z](alpha)), expression(K[t](alpha)) ),
         horiz=FALSE, bty="n", lty=c(1,1), col=c("black", "red") )
 
+legend (0.6, 0.5, legend=c("n=5"), bty="n")
 
 #===================================================
 # Plot: Comparing ROC of z-tests with different n
