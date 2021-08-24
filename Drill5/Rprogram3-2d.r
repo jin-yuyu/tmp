@@ -1,6 +1,6 @@
 
 #===================================================
-pdf(file="ROC-sim1.pdf", width=7.5, height=7.5)
+pdf(file="ROC-sim2.pdf", width=7.5, height=7.5)
 par(mfrow=c(1,1), mar=c(5, 5, 1, 1), omi=c(0,0,0,0) )
 #---------------------------------------------------
 
@@ -23,7 +23,7 @@ Kt = function(mu, alpha, mu0, sigma, n) {
 # Plot: Comparing ROC of z-test and t-test 
 # --------------------------------------------------
 
-mu0 = 0.5; mu1 = 1; sigma=1; n = 5
+mu0 = 0.5; mu1 = 1.5; sigma=1; n = 5
 ALPHA=seq(0.01,0.99, by=0.01)
 
 # Theoretical curves
@@ -35,7 +35,7 @@ powert = Kt(mu1, alpha=ALPHA, mu0=mu0, sigma=sigma, n=n)
 lines(ALPHA, powerz,  col="black", lty=1)
 
 # Simulation approaches
-iter = 2000
+iter = 1000
 nALPHA = length(ALPHA)
 sim.powerz <- sim.powert <- numeric(nALPHA)
 
@@ -60,8 +60,8 @@ lines(ALPHA, sim.powert, lty=2, lwd=1.0, col="red")
 
 
 # Legends
-legend (0, 1.0, 
+legend (0.5, 0.5, 
         legend=c(expression(K[z](alpha)), expression(K[t](alpha)), "Simulated power of z-test", "Simulated power of t-test" ),
         horiz=FALSE, bty="n", lty=c(1,1,2,2), col=c("black", "red", "black", "red") )
-legend (0, 0.8, legend=c("n=5", expression(mu[0]==0.5), expression(mu[1]==1)), bty="n" )
+legend (0.5, 0.3, legend=c("n=5", expression(mu[0]==0.5), expression(mu[1]==1.5)), bty="n" )
 
